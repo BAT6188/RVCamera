@@ -1,0 +1,86 @@
+<resources>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_app_autostart">Autostart on boot</string>
+
+    <string name="pref_title_app_autodetect">Autodetect signal</string>
+
+    <string name="pref_title_app_detect_delay">Autodetect delay</string>
+    <string name="pref_title_app_detect_delay_suffix"> ms</string>
+
+    <string name="pref_title_app_fullscreen">Fullscreen mode</string>
+    <string-array name="pref_app_fullscreen_titles">
+        <item>Disable</item>
+        <item>Hide the status bar</item>
+        <item>Hide the status and navigation bars</item>
+    </string-array>
+    <string-array name="pref_app_fullscreen_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Guide lines settings -->
+    <string name="pref_header_guide_lines">Backup Lines</string>
+
+    <string name="pref_title_guide_lines_show">Show backup lines</string>
+
+    <string name="pref_title_guide_lines_style">Style of backup lines</string>
+    <string-array name="pref_guide_lines_style_titles">
+        <item>Style 1</item>
+    </string-array>
+    <string-array name="pref_guide_lines_style_values" translatable="false">
+        <item>0</item>
+    </string-array>
+
+    <string name="pref_title_guide_lines_move_step">Шаг изменения парковочной линии</string>
+    <string name="pref_default_guide_lines_move_step">2</string>
+    <string name="pref_guide_lines_move_step_current_value">Шаг $1</string>
+    <string name="pref_guide_lines_move_step_unit">%</string>
+    <string name="settings_dialog_message">Here comes a message</string>
+
+    <string name="pref_title_guide_lines_calibrate">Calibrate</string>
+
+    <!-- Video settings -->
+    <string name="pref_header_camera">Camera</string>
+
+    <string name="pref_title_camera_signal">TV Standard</string>
+    <string-array name="pref_camera_signal_titles" translatable="false">
+        <item>NTSC</item>
+        <item>PAL</item>
+    </string-array>
+    <string-array name="pref_camera_signal_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string name="pref_title_camera_mirrored">Enable mirrored view</string>
+    <string name="pref_summ_camera_mirrored"></string>
+
+    <string name="pref_manual_set_dev_loc">Manually select Device Location</string>
+    <string name="pref_manual_set_dev_loc_summ">Enable if device location is not auto detected</string>
+    <string name="pref_select_dev_loc">Select Device File</string>
+    <string name="pref_select_dev_loc_default">/dev/video0</string>
+    <string name="pref_manual_set_type">Manually select Device Type</string>
+    <string name="pref_manual_set_type_summ">Enable if Easycap type is not auto detected</string>
+    <string name="pref_easycap_type">Select Easycap Device</string>
+
+    <string-array name="pref_select_easycap_entries" translatable="false">
+        <item>UTV007</item>
+        <item>Empia</item>
+        <item>STK1160</item>
+        <item>Somagic</item>
+    </string-array>
+    <string-array name="pref_select_easycap_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string name="pref_select_easycap_default" translatable="false">0</string>
+</resources>

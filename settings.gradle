@@ -1,0 +1,3 @@
+include ':app', ':colorpickerview', ':easycam-library'
+project(':colorpickerview').projectDir = new File('libs/colorpickerview')
+project(':easycam-library').projectDir = new File('libs/easycam-library')

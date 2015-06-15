@@ -1,0 +1,58 @@
+
+<resources>
+<string name="title_activity_settings">Настройки</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- General settings -->
+    <string name="pref_header_general">Общие</string>
+
+    <string name="pref_title_app_autostart">Автозапуск</string>
+
+    <string name="pref_title_app_autodetect">Автоопределение сигнала</string>
+
+    <string name="pref_title_app_detect_delay">Задержка определения сигнала</string>
+    <string name="pref_title_app_detect_delay_suffix"> мс</string>
+
+    <string name="pref_title_app_fullscreen">Полноэкранный режим</string>
+    <string-array name="pref_app_fullscreen_titles">
+        <item>Отключить</item>
+        <item>Скрыть строку уведомлений</item>
+        <item>Скрыть строку уведомлений и навигационную панель</item>
+    </string-array>
+
+    <!-- Guide lines settings -->
+    <string name="pref_header_guide_lines">Парковочные линии</string>
+
+    <string name="pref_title_guide_lines_show">Отображать парковочные линии</string>
+
+    <string name="pref_title_guide_lines_style">Стиль парковочных линий</string>
+    <string-array name="pref_guide_lines_style_titles">
+        <item>Стиль 1</item>
+    </string-array>
+
+    <string name="pref_title_guide_lines_move_step">Шаг изменения парковочной линии</string>
+    <string name="pref_default_guide_lines_move_step">2</string>
+    <string name="pref_guide_lines_move_step_current_value">Шаг $1</string>
+    <string name="pref_guide_lines_move_step_unit">%</string>
+    <string name="settings_dialog_message">Here comes a message</string>
+
+    <string name="pref_title_guide_lines_calibrate">Калибровать парковочные линии</string>
+
+    <!-- Video settings -->
+    <string name="pref_header_camera">Камера</string>
+
+    <string name="pref_title_camera_signal">ТВ формат</string>
+
+    <string name="pref_title_camera_mirrored">Включить зеркальное отображение</string>
+    <string name="pref_summ_camera_mirrored"></string>
+
+    <string name="pref_manual_set_dev_loc">Указать файл устройства вручную</string>
+    <string name="pref_manual_set_dev_loc_summ">Включите, если устройство не обнаружено автоматически</string>
+    <string name="pref_select_dev_loc">Файл устройства</string>
+    <string name="pref_select_dev_loc_default">/dev/video0</string>
+    <string name="pref_manual_set_type">Определить тип устройства вручную</string>
+    <string name="pref_manual_set_type_summ">Включите, если тип Easycap-устройства не определён автоматически</string>
+    <string name="pref_easycap_type">Тип Easycap-устройства</string>
+
+</resources>

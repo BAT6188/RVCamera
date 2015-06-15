@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="notification_bar_title">Rear View Camera</string>
+    <string name="notification_bar_subtitle">Нажмите, чтобы открыть настройки</string>
+
+    <string name="app_name">Rear View Camera</string>
+
+
+    <string name="gl_saved">Настройки парковочных линий сохранены</string>
+    <string name="choose_line">Выберите точку для редактирования</string>
+
+    <string name="title_confirm_reset_guide_line_style">Сброс настроек</string>
+    <string name="confirm_reset_guide_line_style">Вы уверены что хотить установить настройки парковочных линий в значения по умолчанию?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="guide_lines_style_was_reset">Настройки парковочных линий установлены по умолчанию</string>
+
+    <string name="detect_signal_service_started">Rear View Camera запущено</string>
+
+</resources>

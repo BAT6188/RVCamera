@@ -1,0 +1,114 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:id="@+id/mainLayout" >
+
+    <kg.delletenebre.rvcamera.EasycamView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/camview"
+        android:layout_gravity="center" />
+
+    <RelativeLayout
+        android:id="@+id/guide_lines_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <kg.delletenebre.rvcamera.GuideLinesView
+            android:id="@+id/guide_lines"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/guide_lines_edit_layout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.shamanland.fonticon.FontIconView style="@style/btn_icon"
+            android:id="@+id/btn_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+
+            android:text="@string/ic_up" />
+
+        <com.shamanland.fonticon.FontIconView style="@style/btn_icon"
+            android:id="@+id/btn_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+
+            android:text="@string/ic_right" />
+
+        <com.shamanland.fonticon.FontIconView style="@style/btn_icon"
+            android:id="@+id/btn_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+
+            android:text="@string/ic_down" />
+
+        <com.shamanland.fonticon.FontIconView style="@style/btn_icon"
+            android:id="@+id/btn_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+
+            android:text="@string/ic_left"
+            android:textSize="@dimen/ic_size" />
+
+        <com.shamanland.fonticon.FontIconView style="@style/btn_icon"
+            android:id="@+id/btn_save"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+
+            android:text="@string/ic_ok"
+            android:textColor="@color/btn_ic_save" />
+
+        <com.shamanland.fonticon.FontIconView style="@style/btn_icon"
+            android:id="@+id/btn_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_toLeftOf="@+id/btn_save"
+
+            android:text="@string/ic_painter"
+            android:textColor="@color/btn_ic_style" />
+
+        <com.shamanland.fonticon.FontIconView style="@style/btn_icon"
+            android:id="@+id/btn_reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+
+            android:text="@string/ic_reset"
+            android:textColor="@color/btn_ic_reset" />
+
+    </RelativeLayout>
+
+
+
+</FrameLayout>

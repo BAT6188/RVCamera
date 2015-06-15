@@ -1,0 +1,116 @@
+-- Merging decision tree log ---
+manifest
+ADDED from AndroidManifest.xml:2:1
+	package
+		ADDED from AndroidManifest.xml:3:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:versionName
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	xmlns:android
+		ADDED from AndroidManifest.xml:2:11
+	android:versionCode
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+uses-permission#android.permission.CAMERA
+ADDED from AndroidManifest.xml:5:5
+	android:name
+		ADDED from AndroidManifest.xml:5:22
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from AndroidManifest.xml:6:5
+	android:name
+		ADDED from AndroidManifest.xml:6:22
+application
+ADDED from AndroidManifest.xml:8:5
+MERGED from com.android.support:appcompat-v7:22.1.1:22:5
+MERGED from com.android.support:support-v4:22.1.1:22:5
+MERGED from com.android.support:support-v4:22.1.1:22:5
+MERGED from RVCamera:colorpickerview:unspecified:24:5
+MERGED from com.android.support:support-v4:22.1.1:22:5
+MERGED from com.shamanland:fonticon:0.1.8:12:5
+	android:clearTaskOnLaunch
+		ADDED from AndroidManifest.xml:15:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:16:9
+	android:label
+		ADDED from AndroidManifest.xml:12:9
+	android:launchMode
+		ADDED from AndroidManifest.xml:14:9
+	android:allowBackup
+		ADDED from AndroidManifest.xml:10:9
+	android:icon
+		ADDED from AndroidManifest.xml:11:9
+	android:theme
+		ADDED from AndroidManifest.xml:13:9
+	android:name
+		ADDED from AndroidManifest.xml:9:9
+receiver#kg.delletenebre.rvcamera.BootCompletedReceiver
+ADDED from AndroidManifest.xml:18:9
+	android:name
+		ADDED from AndroidManifest.xml:18:19
+intent-filter#android.intent.action.BOOT_COMPLETED+android.intent.action.QUICKBOOT_POWERON
+ADDED from AndroidManifest.xml:19:13
+action#android.intent.action.BOOT_COMPLETED
+ADDED from AndroidManifest.xml:20:17
+	android:name
+		ADDED from AndroidManifest.xml:20:25
+action#android.intent.action.QUICKBOOT_POWERON
+ADDED from AndroidManifest.xml:21:17
+	android:name
+		ADDED from AndroidManifest.xml:21:25
+activity#kg.delletenebre.rvcamera.StartActivity
+ADDED from AndroidManifest.xml:25:9
+	android:launchMode
+		ADDED from AndroidManifest.xml:27:13
+	android:name
+		ADDED from AndroidManifest.xml:26:13
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:28:13
+action#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:29:17
+	android:name
+		ADDED from AndroidManifest.xml:29:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:30:17
+	android:name
+		ADDED from AndroidManifest.xml:30:27
+activity#kg.delletenebre.rvcamera.MainActivity
+ADDED from AndroidManifest.xml:34:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:37:13
+	android:label
+		ADDED from AndroidManifest.xml:36:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:38:13
+	android:name
+		ADDED from AndroidManifest.xml:35:13
+activity#kg.delletenebre.rvcamera.SettingsActivity
+ADDED from AndroidManifest.xml:40:9
+	android:label
+		ADDED from AndroidManifest.xml:42:13
+	android:name
+		ADDED from AndroidManifest.xml:41:13
+service#kg.delletenebre.rvcamera.DetectEasycapSignal
+ADDED from AndroidManifest.xml:45:9
+	android:enabled
+		ADDED from AndroidManifest.xml:46:13
+	android:label
+		ADDED from AndroidManifest.xml:48:13
+	android:name
+		ADDED from AndroidManifest.xml:47:13
+uses-sdk
+INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
+MERGED from com.android.support:appcompat-v7:22.1.1:20:5
+MERGED from com.android.support:support-v4:22.1.1:20:5
+MERGED from com.android.support:support-v4:22.1.1:20:5
+MERGED from RVCamera:colorpickerview:unspecified:20:5
+MERGED from com.android.support:support-v4:22.1.1:20:5
+MERGED from RVCamera:easycam-library:unspecified:7:5
+MERGED from com.shamanland:fonticon:0.1.8:8:5
+	android:targetSdkVersion
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:minSdkVersion
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0

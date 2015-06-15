@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="btn_ic">#aaffffff</color>
+    <color name="btn_ic_shadow">#ff000000</color>
+    <color name="btn_ic_glow">#ffffffff</color>
+    <color name="btn_ic_save">#aa00ff00</color>
+    <color name="btn_ic_reset">#aaff0000</color>
+    <color name="btn_ic_style">#aaffff00</color>
+</resources>

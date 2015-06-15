@@ -1,0 +1,32 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:key="app_autostart"
+        android:title="@string/pref_title_app_autostart"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="app_autodetect"
+        android:title="@string/pref_title_app_autodetect"
+        android:defaultValue="true" />
+
+    <kg.delletenebre.rvcamera.EditNumberPreference
+        android:dependency="app_autodetect"
+        android:key="app_detect_delay"
+        android:title="@string/pref_title_app_detect_delay"
+        suffix="@string/pref_title_app_detect_delay_suffix"
+        min="50"
+        max="10000"
+        android:defaultValue="500"
+        android:inputType="number" />
+
+    <ListPreference
+        android:key="app_fullscreen"
+        android:title="@string/pref_title_app_fullscreen"
+        android:entries="@array/pref_app_fullscreen_titles"
+        android:entryValues="@array/pref_app_fullscreen_values"
+        android:defaultValue="2"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null" />
+
+</PreferenceScreen>

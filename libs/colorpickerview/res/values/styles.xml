@@ -1,0 +1,26 @@
+<resources>
+
+    <style name="dialog_color_picker_view_portrait">
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="argb_edit_text">
+        <item name="android:inputType">textCapCharacters</item>
+        <item name="android:maxLength">8</item>
+        <item name="android:digits">0123456789abcdefABCDEF</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:imeOptions">actionDone</item>
+    </style>
+
+    <style name="width_edit_text">
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:maxLength">2</item>
+        <item name="android:digits">0123456789</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:imeOptions">actionDone</item>
+    </style>
+
+
+
+</resources>

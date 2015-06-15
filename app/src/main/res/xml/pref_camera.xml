@@ -1,0 +1,44 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="camera_signal"
+        android:title="@string/pref_title_camera_signal"
+        android:entries="@array/pref_camera_signal_titles"
+        android:entryValues="@array/pref_camera_signal_values"
+        android:defaultValue="0"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null" />
+
+    <CheckBoxPreference
+        android:key="camera_mirrored"
+        android:title="@string/pref_title_camera_mirrored"
+        android:summary="@string/pref_summ_camera_mirrored"
+        android:defaultValue="false" />
+
+
+    <CheckBoxPreference
+        android:key="pref_key_manual_set_dev_loc"
+        android:title="@string/pref_manual_set_dev_loc"
+        android:summary="@string/pref_manual_set_dev_loc_summ"
+        android:defaultValue="false" />
+    <kg.delletenebre.rvcamera.EditTextPrefixSuffixPreference
+        android:dependency="pref_key_manual_set_dev_loc"
+        android:key="pref_select_dev_loc"
+        android:title="@string/pref_select_dev_loc"
+        android:defaultValue="@string/pref_select_dev_loc_default" />
+
+
+    <CheckBoxPreference
+        android:key="pref_key_manual_set_type"
+        android:title="@string/pref_manual_set_type"
+        android:summary="@string/pref_manual_set_type_summ"
+        android:defaultValue="false" />
+    <ListPreference
+        android:dependency="pref_key_manual_set_type"
+        android:key="pref_select_easycap_type"
+        android:title="@string/pref_easycap_type"
+        android:entries="@array/pref_select_easycap_entries"
+        android:entryValues="@array/pref_select_easycap_values"
+        android:defaultValue="@string/pref_select_easycap_default" />
+
+</PreferenceScreen>

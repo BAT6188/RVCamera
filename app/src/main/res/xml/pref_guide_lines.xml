@@ -1,0 +1,24 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/pref_screen_guide_lines">
+
+    <CheckBoxPreference
+        android:key="guide_lines_show"
+        android:title="@string/pref_title_guide_lines_show"
+        android:defaultValue="true" />
+
+    <ListPreference
+        android:dependency="guide_lines_show"
+        android:key="guide_lines_style"
+        android:title="@string/pref_title_guide_lines_style"
+        android:entries="@array/pref_guide_lines_style_titles"
+        android:entryValues="@array/pref_guide_lines_style_values"
+        android:defaultValue="0"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null" />
+
+    <Preference
+        android:id="@+id/guide_lines_calibrate_id"
+        android:dependency="guide_lines_show"
+        android:key="guide_lines_calibrate"
+        android:title="@string/pref_title_guide_lines_calibrate" />
+
+</PreferenceScreen>
