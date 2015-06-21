@@ -18,4 +18,6 @@
 
     <string name="detect_signal_service_started">Rear View Camera запущено</string>
 
+    <string name="error_connecting_to_device">Ошибка подключения к устройству</string>
+
 </resources>

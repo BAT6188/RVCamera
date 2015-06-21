@@ -12,7 +12,6 @@
     <CheckBoxPreference
         android:key="camera_mirrored"
         android:title="@string/pref_title_camera_mirrored"
-        android:summary="@string/pref_summ_camera_mirrored"
         android:defaultValue="false" />
 
 

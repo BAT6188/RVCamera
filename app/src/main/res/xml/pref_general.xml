@@ -20,6 +20,22 @@
         android:defaultValue="500"
         android:inputType="number" />
 
+    <CheckBoxPreference
+        android:dependency="app_autodetect"
+        android:key="app_autodetect_pixels"
+        android:title="@string/pref_title_app_autodetect_pixels"
+        android:summary="@string/pref_summary_app_autodetect_pixels"
+        android:defaultValue="false" />
+
+    <kg.delletenebre.rvcamera.EditNumberPreference
+        android:dependency="app_autodetect_pixels"
+        android:key="app_autodetect_pixels_threshold"
+        android:title="@string/pref_title_app_autodetect_pixels_threshold"
+        min="0"
+        max="10000"
+        android:defaultValue="200"
+        android:inputType="number" />
+
     <ListPreference
         android:key="app_fullscreen"
         android:title="@string/pref_title_app_fullscreen"

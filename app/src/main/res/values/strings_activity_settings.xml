@@ -13,6 +13,10 @@
     <string name="pref_title_app_detect_delay">Autodetect delay</string>
     <string name="pref_title_app_detect_delay_suffix"> ms</string>
 
+    <string name="pref_title_app_autodetect_pixels">Autodetect by pixels brightness</string>
+    <string name="pref_summary_app_autodetect_pixels">Включите, если есть ложные срабатывания</string>
+    <string name="pref_title_app_autodetect_pixels_threshold">Brightness Threshold</string>
+
     <string name="pref_title_app_fullscreen">Fullscreen mode</string>
     <string-array name="pref_app_fullscreen_titles">
         <item>Disable</item>
@@ -60,7 +64,6 @@
     </string-array>
 
     <string name="pref_title_camera_mirrored">Enable mirrored view</string>
-    <string name="pref_summ_camera_mirrored"></string>
 
     <string name="pref_manual_set_dev_loc">Manually select Device Location</string>
     <string name="pref_manual_set_dev_loc_summ">Enable if device location is not auto detected</string>

@@ -14,6 +14,10 @@
     <string name="pref_title_app_detect_delay">Задержка определения сигнала</string>
     <string name="pref_title_app_detect_delay_suffix"> мс</string>
 
+    <string name="pref_title_app_autodetect_pixels">Автоопределение сигнала по яркости пикселей</string>
+    <string name="pref_summary_app_autodetect_pixels">Включите, если есть ложные срабатывания</string>
+    <string name="pref_title_app_autodetect_pixels_threshold">Пороговый уровень</string>
+
     <string name="pref_title_app_fullscreen">Полноэкранный режим</string>
     <string-array name="pref_app_fullscreen_titles">
         <item>Отключить</item>
@@ -45,7 +49,6 @@
     <string name="pref_title_camera_signal">ТВ формат</string>
 
     <string name="pref_title_camera_mirrored">Включить зеркальное отображение</string>
-    <string name="pref_summ_camera_mirrored"></string>
 
     <string name="pref_manual_set_dev_loc">Указать файл устройства вручную</string>
     <string name="pref_manual_set_dev_loc_summ">Включите, если устройство не обнаружено автоматически</string>

@@ -18,5 +18,7 @@
 
     <string name="detect_signal_service_started">Autodetect signal service started</string>
 
+    <string name="error_connecting_to_device">Error connecting to device</string>
+
 
 </resources>

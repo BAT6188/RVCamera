@@ -8,8 +8,8 @@ public class App extends Application {
     protected static final boolean DEBUG = true;
 
     public static DetectEasycapSignal detectSignalService;
-    private static boolean activityVisible, autodetectSignal, isManualDeviceLocation;
-    private static int detectDelay;
+    private static boolean activityVisible, autodetectSignal, autodetectSignalPixels, isManualDeviceLocation;
+    private static int detectDelay, brightnessThreshold;
     private static String deviceLocation;
 
 
@@ -37,6 +37,7 @@ public class App extends Application {
     }
 
 
+
     public static void setAutoDetectSignal(boolean isAutoDetect) {
         autodetectSignal = isAutoDetect;
     }
@@ -44,13 +45,29 @@ public class App extends Application {
         return autodetectSignal;
     }
 
-
-    public static int getDetectDelay() {
-        return detectDelay;
-    }
     public static void setDetectDelay(int delay) {
         detectDelay = delay;
     }
+    public static int getDetectDelay() {
+        return detectDelay;
+    }
+
+
+
+    public static void setAutoDetectSignalPixels(boolean isAutoDetectPixels) {
+        autodetectSignalPixels = isAutoDetectPixels;
+    }
+    public static boolean isAutoDetectSignalPixelsEnabled() {
+        return autodetectSignalPixels;
+    }
+
+    public static void setBrightnessThreshold(int threshold) {
+        brightnessThreshold = threshold;
+    }
+    public static int getBrightnessThreshold() {
+        return brightnessThreshold;
+    }
+
 
 
     public static boolean isManualDeviceLocation() {

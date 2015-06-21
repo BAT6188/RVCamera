@@ -68,6 +68,8 @@ public class DetectEasycapSignal extends Service {
 
         App.setAutoDetectSignal(_settings.getBoolean("app_autodetect", true));
         App.setDetectDelay(Integer.parseInt(_settings.getString("app_detect_delay", "500")));
+        App.setAutoDetectSignalPixels(_settings.getBoolean("app_autodetect_pixels", false));
+        App.setBrightnessThreshold(Integer.parseInt(_settings.getString("app_autodetect_pixels_threshold", "200")));
         App.setIsManualDeviceLocation(_settings.getBoolean("pref_key_manual_set_dev_loc", false));
         App.setDeviceLocation(_settings.getString("pref_select_dev_loc", "/dev/video0"));
 
@@ -98,8 +100,6 @@ public class DetectEasycapSignal extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        //Toast.makeText(getBaseContext(), getBaseContext().getString(R.string.detect_signal_service_started), Toast.LENGTH_SHORT).show();
-
         return START_STICKY;
     }
 
@@ -150,7 +150,12 @@ public class DetectEasycapSignal extends Service {
 
                             if (device.isDeviceConnected() && device.isAttached()) {
                                 try {
-                                    if (device.getFrame().sameAs(emptyBitmap)) {
+                                    device.getFrame();
+
+                                    if( !App.isAutoDetectSignalPixelsEnabled() && device.getFrame().sameAs(emptyBitmap) ) {
+                                        isSignal = false;
+
+                                    } else if ( App.isAutoDetectSignalPixelsEnabled() && device.getPixelsSum() <= App.getBrightnessThreshold() ) {
                                         isSignal = false;
 
                                     } else if (mainActivity == null && !App.isActivityVisible()) {
@@ -209,9 +214,9 @@ public class DetectEasycapSignal extends Service {
                         "/dev/easycap"
                 };
 
-                for (int j = 0; j < path.length; j++) {
+                for (String aPath : path) {
                     for (int i = 0; i < 10; i++) {
-                        fName = path[j] + String.valueOf(i);
+                        fName = aPath + String.valueOf(i);
 
                         if (checkFileExists(fName)) {
                             return fName;

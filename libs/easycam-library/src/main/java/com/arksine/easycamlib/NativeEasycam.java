@@ -6,6 +6,7 @@ import java.nio.ByteBuffer;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ public class NativeEasycam implements Easycam {
     private Bitmap mBitmap, mBitmap_cleared;
     private int mWidth;
     private int mHeight;
+    private int pixelColorSum;
     
     private native int startDevice(ByteBuffer rgbBuf, String deviceName, int width, int height, 
     		int devType, int regionStd, int numBufs);
@@ -43,6 +45,7 @@ public class NativeEasycam implements Easycam {
         mHeight = deviceSets.frameHeight;
         mBitmap = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.RGB_565);
         mBitmap_cleared = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.RGB_565);
+        pixelColorSum = 0;
         
         // allocate an array of bytes to hold the entire size of the bitmap
         // at 32 bits per pixel
@@ -80,9 +83,9 @@ public class NativeEasycam implements Easycam {
 
         if(deviceReady) {
             Log.i(TAG, "Preparing camera with device name " + deviceSets.devName);
-            if(-1 == startDevice(rgbBuffer, deviceSets.devName, deviceSets.frameWidth,
+            if(startDevice(rgbBuffer, deviceSets.devName, deviceSets.frameWidth,
                     deviceSets.frameHeight, deviceSets.devType.second,
-                    deviceSets.devStandard.second, deviceSets.numBuffers)) {
+                    deviceSets.devStandard.second, deviceSets.numBuffers) == -1) {
 
                 deviceConnected = false;
             } else {
@@ -95,10 +98,24 @@ public class NativeEasycam implements Easycam {
     public Bitmap getFrame() {
         getNextFrame();
         mBitmap.copyPixelsFromBuffer(rgbBuffer);
-        //mBitmap.sameAs(mBitmap_cleared)
         rgbBuffer.clear();
 
+        pixelColorSum = 0;
+        for(int x = 0; x < mBitmap.getWidth(); x += 10) { for (int y = 0; y < mBitmap.getHeight(); y += 10) {
+            int pixel = mBitmap.getPixel(x,y);
+
+            int r = Color.red(pixel);
+            int g = Color.green(pixel);
+            int b = Color.blue(pixel);
+
+            pixelColorSum += (r + b + g) / 3;
+        } }
+
         return mBitmap;
+    }
+
+    public int getPixelsSum() {
+        return pixelColorSum / 255;
     }
 
     public void stop() {

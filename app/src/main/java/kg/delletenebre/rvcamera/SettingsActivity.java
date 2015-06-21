@@ -42,7 +42,7 @@ public class SettingsActivity extends PreferenceActivity {
 
         setupSimplePreferencesScreen();
 
-        Preference myPref = (Preference) findPreference("guide_lines_calibrate");
+        Preference myPref = findPreference("guide_lines_calibrate");
 
         if(myPref != null) {
             myPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -268,6 +268,8 @@ public class SettingsActivity extends PreferenceActivity {
 
         App.setAutoDetectSignal(_settings.getBoolean("app_autodetect", true));
         App.setDetectDelay(Integer.parseInt(_settings.getString("app_detect_delay", "500")));
+        App.setAutoDetectSignalPixels(_settings.getBoolean("app_autodetect_pixels", false));
+        App.setBrightnessThreshold(Integer.parseInt(_settings.getString("app_autodetect_pixels_threshold", "200")));
         App.setIsManualDeviceLocation(_settings.getBoolean("pref_key_manual_set_dev_loc", false));
         App.setDeviceLocation(_settings.getString("pref_select_dev_loc", "/dev/video0"));
     }

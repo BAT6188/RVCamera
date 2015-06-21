@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.preference.PreferenceManager;
@@ -11,6 +12,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.arksine.easycamlib.Easycam;
@@ -55,7 +57,6 @@ public class EasycamView extends SurfaceView implements SurfaceHolder.Callback, 
 
         mHolder = getHolder();
         mHolder.addCallback(this);
-
     }
 
     @Override
@@ -63,12 +64,14 @@ public class EasycamView extends SurfaceView implements SurfaceHolder.Callback, 
 
         while(mRunning) {
             if ( capDevice != null && capDevice.isAttached() ) {
+
                 Canvas canvas = mHolder.lockCanvas();
                 if(canvas != null) {
                     try {
                         drawOnCanvas(canvas, capDevice.getFrame());
+                        if(App.DEBUG) Log.d("Pixels Sum: ", String.valueOf(capDevice.getPixelsSum()));
                     } catch (Exception e) {
-
+                        e.printStackTrace();
                     }
                     mHolder.unlockCanvasAndPost(canvas);
                 }
@@ -116,7 +119,7 @@ public class EasycamView extends SurfaceView implements SurfaceHolder.Callback, 
 
         capDevice = App.detectSignalService.getDevice();
         if(capDevice != null && !capDevice.isDeviceConnected()) {
-            Toast.makeText(appContext, "Error connecting to device", Toast.LENGTH_SHORT).show();
+            Toast.makeText(appContext, getResources().getString(R.string.error_connecting_to_device), Toast.LENGTH_SHORT).show();
 
             if(App.DEBUG) Log.e(TAG, "Error connecting device");
             mRunning = false;
