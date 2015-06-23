@@ -22,14 +22,18 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.arksine.easycamlib.Easycam;
 import com.shamanland.fonticon.FontIconTypefaceHolder;
 import com.shamanland.fonticon.FontIconView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import afzkl.development.colorpickerview.dialog.ColorPickerDialog;
 
@@ -43,6 +47,7 @@ public class MainActivity extends Activity {
     private EasycamView camView;
     private SurfaceHolder mHolder;
     private FrameLayout currentLayout;
+    private TextView pixelBrightnessView;
 
     private SharedPreferences _settings;
 
@@ -80,6 +85,37 @@ public class MainActivity extends Activity {
 
     }
 
+
+    TimerTask mTimerTask;
+    final Handler handler = new Handler();
+    Timer t = new Timer();
+    public void doTimerTask(){
+
+        mTimerTask = new TimerTask() {
+            public void run() {
+                handler.post(new Runnable() {
+                    public void run() {
+
+                        Easycam ec = App.detectSignalService.getDevice();
+                        if(ec != null) {
+                            pixelBrightnessView.setText( getResources().getString(R.string.pixel_brightness) + " [ " + getResources().getString(R.string.pref_title_app_autodetect_pixels) + " ]: " + String.valueOf(ec.getPixelsSum()));
+                        }
+                    }
+                });
+            }};
+
+        t.schedule(mTimerTask, 1000, 1000);  //
+
+    }
+
+    public void stopTask(){
+
+        if(mTimerTask!=null){
+            mTimerTask.cancel();
+        }
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         _settings = PreferenceManager.getDefaultSharedPreferences(this);
@@ -96,6 +132,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         App.detectSignalService.setMainActivity(this);
+        App.setDebug( _settings.getBoolean("app_debug", false) );
 
         currentLayout = (FrameLayout) findViewById(R.id.mainLayout);
         camView = (EasycamView) findViewById(R.id.camview);
@@ -106,6 +143,9 @@ public class MainActivity extends Activity {
         _settingsEditor.commit();
 
         glView = (GuideLinesView) findViewById(R.id.guide_lines);
+
+        pixelBrightnessView = (TextView) findViewById(R.id.pixelBrightness);
+        if ( App.DEBUG ) doTimerTask();
 
 
         /**** Display: Calibrate guide lines ****/

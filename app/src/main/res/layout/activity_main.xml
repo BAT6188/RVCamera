@@ -11,6 +11,13 @@
         android:id="@+id/camview"
         android:layout_gravity="center" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pixelBrightness"
+        android:textColor="#fff"
+        android:text="" />
+
     <RelativeLayout
         android:id="@+id/guide_lines_layout"
         android:layout_width="match_parent"

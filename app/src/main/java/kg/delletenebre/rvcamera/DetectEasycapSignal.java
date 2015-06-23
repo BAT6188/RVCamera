@@ -15,6 +15,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.arksine.easycamlib.Easycam;
@@ -27,7 +28,7 @@ public class DetectEasycapSignal extends Service {
 
     private static boolean running = true;
     private CheckSignal checkSignal;
-    private Activity mainActivity;
+    private MainActivity mainActivity;
     private Easycam device;
     private boolean isSignal;
     private Bitmap emptyBitmap;
@@ -103,10 +104,10 @@ public class DetectEasycapSignal extends Service {
         return START_STICKY;
     }
 
-    public Activity getMainActivity() {
+    public MainActivity getMainActivity() {
         return mainActivity;
     }
-    public void setMainActivity(Activity activity) {
+    public void setMainActivity(MainActivity activity) {
         mainActivity = activity;
     }
 
@@ -134,6 +135,7 @@ public class DetectEasycapSignal extends Service {
                             sleep(1500);
 
                             if (deviceName == null || deviceNameChanged) {
+                                device = null;
                                 deviceName = checkDevices();
                                 deviceNameChanged = false;
                             }
@@ -150,12 +152,9 @@ public class DetectEasycapSignal extends Service {
 
                             if (device.isDeviceConnected() && device.isAttached()) {
                                 try {
-                                    device.getFrame();
+                                    //device.getFrame();
 
-                                    if( !App.isAutoDetectSignalPixelsEnabled() && device.getFrame().sameAs(emptyBitmap) ) {
-                                        isSignal = false;
-
-                                    } else if ( App.isAutoDetectSignalPixelsEnabled() && device.getPixelsSum() <= App.getBrightnessThreshold() ) {
+                                    if( device.getFrame().sameAs(emptyBitmap) || ( App.isAutoDetectSignalPixelsEnabled() && device.getPixelsSum() <= App.getBrightnessThreshold() ) ) {
                                         isSignal = false;
 
                                     } else if (mainActivity == null && !App.isActivityVisible()) {

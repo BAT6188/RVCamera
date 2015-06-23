@@ -5,7 +5,7 @@ import android.app.Application;
 public class App extends Application {
 
     private static App singleton;
-    protected static final boolean DEBUG = true;
+    protected static boolean DEBUG = false;
 
     public static DetectEasycapSignal detectSignalService;
     private static boolean activityVisible, autodetectSignal, autodetectSignalPixels, isManualDeviceLocation;
@@ -83,5 +83,10 @@ public class App extends Application {
     }
     public static void setDeviceLocation(String location) {
         deviceLocation = location;
+    }
+
+
+    public static void setDebug(boolean state) {
+        DEBUG = state;
     }
 }

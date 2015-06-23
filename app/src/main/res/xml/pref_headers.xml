@@ -10,4 +10,8 @@
         android:fragment="kg.delletenebre.rvcamera.SettingsActivity$GuideLinesPreferenceFragment"
         android:title="@string/pref_header_guide_lines" />
 
+    <header
+        android:fragment="kg.delletenebre.rvcamera.SettingsActivity$DebugPreferenceFragment"
+        android:title="@string/pref_header_debug" />
+
 </preference-headers>

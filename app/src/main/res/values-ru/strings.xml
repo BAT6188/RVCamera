@@ -20,4 +20,8 @@
 
     <string name="error_connecting_to_device">Ошибка подключения к устройству</string>
 
+    <string name="pixel_brightness">Яркость</string>
+
+    <string name="settings_saved">RVCamera: Настройки сохранены</string>
+
 </resources>

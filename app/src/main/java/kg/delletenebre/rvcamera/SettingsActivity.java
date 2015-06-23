@@ -17,6 +17,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -69,7 +70,8 @@ public class SettingsActivity extends PreferenceActivity {
     protected boolean isValidFragment(String fragmentName) {
         return  GeneralPreferenceFragment.class.getName().equals(fragmentName) ||
                 GuideLinesPreferenceFragment.class.getName().equals(fragmentName) ||
-                CameraPreferenceFragment.class.getName().equals(fragmentName);
+                CameraPreferenceFragment.class.getName().equals(fragmentName) ||
+                DebugPreferenceFragment.class.getName().equals(fragmentName);
     }
 
     /**
@@ -93,6 +95,11 @@ public class SettingsActivity extends PreferenceActivity {
         fakeHeader.setTitle(R.string.pref_header_camera);
         getPreferenceScreen().addPreference(fakeHeader);
         addPreferencesFromResource(R.xml.pref_camera);
+
+        fakeHeader = new PreferenceCategory(this);
+        fakeHeader.setTitle(R.string.pref_header_debug);
+        getPreferenceScreen().addPreference(fakeHeader);
+        addPreferencesFromResource(R.xml.pref_debug);
 
         // Bind the summaries of EditText/List/Dialog/Ringtone preferences to
         // their values. When their values change, their summaries are updated
@@ -253,6 +260,19 @@ public class SettingsActivity extends PreferenceActivity {
         }
     }
 
+    /**
+     * This fragment shows data and sync preferences only. It is used when the
+     * activity is showing a two-pane settings UI.
+     */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public static class DebugPreferenceFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.pref_debug);
+        }
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -272,5 +292,7 @@ public class SettingsActivity extends PreferenceActivity {
         App.setBrightnessThreshold(Integer.parseInt(_settings.getString("app_autodetect_pixels_threshold", "200")));
         App.setIsManualDeviceLocation(_settings.getBoolean("pref_key_manual_set_dev_loc", false));
         App.setDeviceLocation(_settings.getString("pref_select_dev_loc", "/dev/video0"));
+
+        Toast.makeText(getApplicationContext(), R.string.settings_saved, Toast.LENGTH_SHORT).show();
     }
 }

@@ -20,5 +20,8 @@
 
     <string name="error_connecting_to_device">Error connecting to device</string>
 
+    <string name="pixel_brightness">Brightness</string>
+
+    <string name="settings_saved">RVCamera: Settings saved</string>
 
 </resources>

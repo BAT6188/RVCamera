@@ -8,8 +8,8 @@ android {
         applicationId "kg.delletenebre.rvcamera"
         minSdkVersion 16
         targetSdkVersion 21
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "0.82"
     }
     buildTypes {
         release {
