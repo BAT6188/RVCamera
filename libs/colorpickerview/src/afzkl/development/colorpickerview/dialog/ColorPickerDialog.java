@@ -16,11 +16,6 @@
 
 package afzkl.development.colorpickerview.dialog;
 
-import afzkl.development.colorpickerview.ARGBEditText;
-import afzkl.development.colorpickerview.R;
-import afzkl.development.colorpickerview.view.ColorPanelView;
-import afzkl.development.colorpickerview.view.ColorPickerView;
-import afzkl.development.colorpickerview.view.ColorPickerView.OnColorChangedListener;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -35,8 +30,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import afzkl.development.colorpickerview.ARGBEditText;
+import afzkl.development.colorpickerview.R;
+import afzkl.development.colorpickerview.view.ColorPanelView;
+import afzkl.development.colorpickerview.view.ColorPickerView;
+import afzkl.development.colorpickerview.view.ColorPickerView.OnColorChangedListener;
 
 public class ColorPickerDialog extends AlertDialog implements
 		ColorPickerView.OnColorChangedListener {

@@ -15,8 +15,6 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.preference.PreferenceScreen;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.util.List;
@@ -136,7 +134,7 @@ public class SettingsActivity extends PreferenceActivity {
      * "simplified" settings UI should be shown.
      */
     private static boolean isSimplePreferences(Context context) {
-        return ALWAYS_SIMPLE_PREFS
+        return     ALWAYS_SIMPLE_PREFS
                 || Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB
                 || !isXLargeTablet(context);
     }
@@ -261,7 +259,7 @@ public class SettingsActivity extends PreferenceActivity {
     }
 
     /**
-     * This fragment shows data and sync preferences only. It is used when the
+     * This fragment shows debug preferences only. It is used when the
      * activity is showing a two-pane settings UI.
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -293,6 +291,6 @@ public class SettingsActivity extends PreferenceActivity {
         App.setIsManualDeviceLocation(_settings.getBoolean("pref_key_manual_set_dev_loc", false));
         App.setDeviceLocation(_settings.getString("pref_select_dev_loc", "/dev/video0"));
 
-        Toast.makeText(getApplicationContext(), R.string.settings_saved, Toast.LENGTH_SHORT).show();
+        if ( App.DEBUG ) { Toast.makeText(getApplicationContext(), R.string.settings_saved, Toast.LENGTH_SHORT).show(); }
     }
 }

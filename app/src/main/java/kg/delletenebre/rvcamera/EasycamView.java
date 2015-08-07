@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.preference.PreferenceManager;
@@ -12,7 +11,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.arksine.easycamlib.Easycam;
@@ -96,14 +94,8 @@ public class EasycamView extends SurfaceView implements SurfaceHolder.Callback, 
         }
     }
 
-    protected Rect getViewingWindow() {
-        return mViewWindow;
-    }
-
     private void setViewingWindow(int winWidth, int winHeight) {
-
         mViewWindow = new Rect(0,0,winWidth,winHeight);
-
     }
 
     public void resume() {

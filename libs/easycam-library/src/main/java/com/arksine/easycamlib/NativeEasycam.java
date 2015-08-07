@@ -1,14 +1,14 @@
 package com.arksine.easycamlib;
 
-import java.io.File;
-import java.nio.ByteBuffer;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.Log;
 import android.widget.Toast;
+
+import java.io.File;
+import java.nio.ByteBuffer;
 
 public class NativeEasycam implements Easycam {
 

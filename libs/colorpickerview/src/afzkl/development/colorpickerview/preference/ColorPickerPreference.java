@@ -1,8 +1,5 @@
 package afzkl.development.colorpickerview.preference;
 
-import afzkl.development.colorpickerview.R;
-import afzkl.development.colorpickerview.view.ColorPanelView;
-import afzkl.development.colorpickerview.view.ColorPickerView;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Parcel;
@@ -12,6 +9,10 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import afzkl.development.colorpickerview.R;
+import afzkl.development.colorpickerview.view.ColorPanelView;
+import afzkl.development.colorpickerview.view.ColorPickerView;
 
 public class ColorPickerPreference extends DialogPreference implements ColorPickerView.OnColorChangedListener{
 

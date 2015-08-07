@@ -1,7 +1,5 @@
 package kg.delletenebre.rvcamera;
 
-import android.app.Activity;
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -9,14 +7,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.os.Handler;
+import android.os.Build;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.arksine.easycamlib.Easycam;
 import com.arksine.easycamlib.NativeEasycam;
@@ -24,7 +19,7 @@ import com.arksine.easycamlib.NativeEasycam;
 import java.io.File;
 
 public class DetectEasycapSignal extends Service {
-    private String TAG = "********";//getClass().getName();
+    private String TAG = getClass().getName();
 
     private static boolean running = true;
     private CheckSignal checkSignal;
@@ -38,6 +33,12 @@ public class DetectEasycapSignal extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+
+    private int getNotificationIcon() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
+                ? R.drawable.ic_launcher_5
+                : R.drawable.ic_launcher;
     }
 
     @Override
@@ -58,7 +59,7 @@ public class DetectEasycapSignal extends Service {
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder( App.getInstance() )
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(getNotificationIcon())
                 .setContentText( App.getInstance().getResources().getString(R.string.notification_bar_subtitle) )
                 .setContentTitle( App.getInstance().getResources().getString(R.string.notification_bar_title) )
                 .setContentIntent( pendingIntent)

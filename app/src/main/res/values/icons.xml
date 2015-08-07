@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string translatable="false" name="ic_up" >&#xe001;</string>
-    <string translatable="false" name="ic_right">&#xe002;</string>
+    <string translatable="false" name="ic_right">&#xe004;</string>
     <string translatable="false" name="ic_down">&#xe000;</string>
-    <string translatable="false" name="ic_left">&#xe003;</string>
-    <string translatable="false" name="ic_painter">&#xe004;</string>
+    <string translatable="false" name="ic_left">&#xe002;</string>
+    <string translatable="false" name="ic_painter">&#xe003;</string>
     <string translatable="false" name="ic_reset">&#xe005;</string>
     <string translatable="false" name="ic_cancel">&#xe006;</string>
     <string translatable="false" name="ic_ok">&#xe007;</string>
+    <string translatable="false" name="ic_car">&#xe008;</string>
 </resources>

@@ -133,24 +133,24 @@ public class GuideLinesStyle {
 
         }
 
-        _settingsEditor.commit();
+        _settingsEditor.apply();
     }
-
-    private PointF getCoordinatesForY(PointF a, PointF b, float x) {
-        return new PointF( x, getPointY(a, b, x) );
-    }
-
-    private PointF getCoordinatesForX(PointF a, PointF b, float y) {
-        return new PointF( getPointX(a, b, y), y );
-    }
-
-    private float getPointY(PointF a, PointF b, float x) {
-        return ( (b.y - a.y) * (x - a.x) / (b.x - a.x) ) + a.y;
-    }
-
-    private float getPointX(PointF a, PointF b, float y) {
-        return ( (b.x - a.x) * (y - a.y) / (b.y - a.y) ) + a.x;
-    }
+//
+//    private PointF getCoordinatesForY(PointF a, PointF b, float x) {
+//        return new PointF( x, getPointY(a, b, x) );
+//    }
+//
+//    private PointF getCoordinatesForX(PointF a, PointF b, float y) {
+//        return new PointF( getPointX(a, b, y), y );
+//    }
+//
+//    private float getPointY(PointF a, PointF b, float x) {
+//        return ( (b.y - a.y) * (x - a.x) / (b.x - a.x) ) + a.y;
+//    }
+//
+//    private float getPointX(PointF a, PointF b, float y) {
+//        return ( (b.x - a.x) * (y - a.y) / (b.y - a.y) ) + a.x;
+//    }
 
     private final List<List> defaultStyles = new ArrayList<List>() {{
         /* **** 0 **** */

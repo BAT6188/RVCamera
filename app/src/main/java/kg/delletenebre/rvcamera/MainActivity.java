@@ -2,7 +2,6 @@ package kg.delletenebre.rvcamera;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,14 +11,10 @@ import android.graphics.PointF;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -39,27 +34,16 @@ import afzkl.development.colorpickerview.dialog.ColorPickerDialog;
 
 
 public class MainActivity extends Activity {
-    private String TAG = this.getClass().getName();
 
     private boolean isEditLayoutShow;
     private int fullscreenMode = 0;
 
-    private EasycamView camView;
-    private SurfaceHolder mHolder;
-    private FrameLayout currentLayout;
     private TextView pixelBrightnessView;
 
     private SharedPreferences _settings;
 
     private GuideLinesView glView;
 
-    private FontIconView btnGLEditSave,
-                         btnGLEditReset,
-                         btnGLEditChooseColor,
-                         btnGLEditUp,
-                         btnGLEditRight,
-                         btnGLEditDown,
-                         btnGLEditLeft;
     private float lineMoveStep;
     private static final int radioButtonMargin = dpToPx(17);
 
@@ -104,15 +88,7 @@ public class MainActivity extends Activity {
                 });
             }};
 
-        t.schedule(mTimerTask, 1000, 1000);  //
-
-    }
-
-    public void stopTask(){
-
-        if(mTimerTask!=null){
-            mTimerTask.cancel();
-        }
+        t.schedule(mTimerTask, 1000, 1000);
 
     }
 
@@ -134,13 +110,9 @@ public class MainActivity extends Activity {
         App.detectSignalService.setMainActivity(this);
         App.setDebug( _settings.getBoolean("app_debug", false) );
 
-        currentLayout = (FrameLayout) findViewById(R.id.mainLayout);
-        camView = (EasycamView) findViewById(R.id.camview);
-        mHolder = camView.getHolder();
-
         SharedPreferences.Editor _settingsEditor = _settings.edit();
         _settingsEditor.putBoolean("pref_key_layout_toasts", false);
-        _settingsEditor.commit();
+        _settingsEditor.apply();
 
         glView = (GuideLinesView) findViewById(R.id.guide_lines);
 
@@ -149,6 +121,7 @@ public class MainActivity extends Activity {
 
 
         /**** Display: Calibrate guide lines ****/
+
         layoutGLEdit = (RelativeLayout)findViewById(R.id.guide_lines_edit_layout);
         isEditLayoutShow = getIntent().getBooleanExtra("gl_edit_layout_show", false);
         if ( isEditLayoutShow ) {
@@ -165,13 +138,17 @@ public class MainActivity extends Activity {
                     int w = layoutGLEdit.getMeasuredWidth(),
                         h = layoutGLEdit.getMeasuredHeight();
 
+                    if( fullscreenMode == 2 ) {
+                        h += dpToPx(48);
+                    }
+
                     layoutGLEditSize = new Point(w, h);
 
                     int current_style_index = Integer.parseInt(_settings.getString("guide_lines_style", "0"));
                     GuideLinesStyle gl_style = new GuideLinesStyle(MainActivity.this);
                     List<GuideLinesStyle.GuideLine> style = gl_style.getStyleFromSettings( current_style_index );
 
-                    String settingsPrefix = gl_style.settingsPrefix + current_style_index;
+                    String settingsPrefix = GuideLinesStyle.settingsPrefix + current_style_index;
                     for(int i = 0; i < style.size(); i++) {
                         GuideLinesStyle.GuideLine gline = style.get(i);
 
@@ -214,13 +191,13 @@ public class MainActivity extends Activity {
                 }
             });
 
-            btnGLEditSave = (FontIconView)findViewById(R.id.btn_save);
-            btnGLEditReset = (FontIconView)findViewById(R.id.btn_reset);
-            btnGLEditChooseColor = (FontIconView)findViewById(R.id.btn_color);
-            btnGLEditUp = (FontIconView)findViewById(R.id.btn_up);
-            btnGLEditDown = (FontIconView)findViewById(R.id.btn_down);
-            btnGLEditLeft = (FontIconView)findViewById(R.id.btn_left);
-            btnGLEditRight = (FontIconView)findViewById(R.id.btn_right);
+            FontIconView btnGLEditSave = (FontIconView)findViewById(R.id.btn_save);
+            FontIconView btnGLEditReset = (FontIconView)findViewById(R.id.btn_reset);
+            FontIconView btnGLEditChooseColor = (FontIconView)findViewById(R.id.btn_color);
+            FontIconView btnGLEditUp = (FontIconView) findViewById(R.id.btn_up);
+            FontIconView btnGLEditDown = (FontIconView)findViewById(R.id.btn_down);
+            FontIconView btnGLEditLeft = (FontIconView)findViewById(R.id.btn_left);
+            FontIconView btnGLEditRight = (FontIconView)findViewById(R.id.btn_right);
 
             //**** Нажатие кнопки СОХРАНИТЬ
             btnGLEditSave.setOnClickListener(new View.OnClickListener() {
@@ -324,7 +301,7 @@ public class MainActivity extends Activity {
                                 _settingsEditor.putInt(settingKeyColor, colorDialog.getColor());
                                 _settingsEditor.putInt(settingKeyEffect, colorDialog.getLineStyle());
                                 _settingsEditor.putInt(settingKeyWidth, colorDialog.getLineWidth());
-                                _settingsEditor.commit();
+                                _settingsEditor.apply();
 
                                 if (glView != null) {
                                     glView.invalidate();
@@ -426,22 +403,6 @@ public class MainActivity extends Activity {
         }
     }
 
-    private PointF getCoordinatesForY(PointF a, PointF b, float x) {
-        return new PointF( x, getPointY(a, b, x) );
-    }
-
-    private PointF getCoordinatesForX(PointF a, PointF b, float y) {
-        return new PointF( getPointX(a, b, y), y );
-    }
-
-    private float getPointY(PointF a, PointF b, float x) {
-        return ( (b.y - a.y) * (x - a.x) / (b.x - a.x) ) + a.y;
-    }
-
-    private float getPointX(PointF a, PointF b, float y) {
-        return ( (b.x - a.x) * (y - a.y) / (b.y - a.y) ) + a.x;
-    }
-
     private static int dpToPx(int dp) {
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
@@ -462,7 +423,7 @@ public class MainActivity extends Activity {
         SharedPreferences.Editor _settingsEditor = _settings.edit();
         _settingsEditor.putFloat(String.valueOf(settingKey) + "x", point.x);
         _settingsEditor.putFloat(String.valueOf(settingKey) + "y", point.y);
-        _settingsEditor.commit();
+        _settingsEditor.apply();
     }
 
     private void moveGuideLineByRadioButton(RadioButton rb, String direction, boolean longClick) {
@@ -470,18 +431,23 @@ public class MainActivity extends Activity {
             float step = longClick ? lineMoveStep * 10 : lineMoveStep;
             PointF point = getCoordinatesForRB(rb);
 
-            if (direction.equals("up")) {
-                point.y -= step;
+            switch (direction) {
+                case "up":
+                    point.y -= step;
 
-            } else if (direction.equals("down")) {
-                point.y += step;
+                    break;
+                case "down":
+                    point.y += step;
 
-            } else if (direction.equals("left")) {
-                point.x -= step;
+                    break;
+                case "left":
+                    point.x -= step;
 
-            } else if (direction.equals("right")) {
-                point.x += step;
+                    break;
+                case "right":
+                    point.x += step;
 
+                    break;
             }
             point = checkPointForMinMax(point);
 

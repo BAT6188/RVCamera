@@ -2,20 +2,12 @@ package kg.delletenebre.rvcamera;
 
 import android.view.View;
 
-/**
+/*
  * http://stackoverflow.com/a/21764444
- * Usage:
-view.setOnClickListener(new DoubleClickListener() {
-    @Override
-    public void onSingleClick(View v) {}
-
-    @Override
-    public void onDoubleClick(View v) {}
-});
  */
 public abstract class DoubleClickListener implements View.OnClickListener {
 
-    private static final long DOUBLE_CLICK_TIME_DELTA = 300;//milliseconds
+    private static final long DOUBLE_CLICK_TIME_DELTA = 300;//ms
 
     long lastClickTime = 0;
 

@@ -1,10 +1,10 @@
 package com.arksine.easycamlib;
 
-import java.io.File;
-
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.util.Pair;
+
+import java.io.File;
 
 
 public class EasycapSettings {
